@@ -4,6 +4,7 @@
 
 | 시각 (KST) | 분류 | 커밋 메시지 | 기록 |
 | --- | --- | --- | --- |
+| 2026-11-06 14:19 | 문서 | docs: attribute ddnwls contributions separately from repository owner | [4c94ffd](https://github.com/asnt39/ppapeul/commit/4c94ffdb3daebd197cf11ac29428d85da5f02baa) |
 | 2026-11-06 14:16 | 자동화/빌드 | fix: classify docs and GitHub Actions commits accurately | [f33053a](https://github.com/asnt39/ppapeul/commit/f33053accdeb01eb600b40abb9fe623ed03e0d89) |
 | 2026-11-06 14:15 | 문서 | docs: initialize Ppapeul task request log and repository routing decision | [aead9a4](https://github.com/asnt39/ppapeul/commit/aead9a45462f99aee0a3fa74c1a6f76e046ea3f1) |
 | 2026-11-06 14:14 | 문서 | docs: guide Codex to keep Ppapeul tasks and archives in this repository | [24e0f4b](https://github.com/asnt39/ppapeul/commit/24e0f4b80f7e9c8414378b34775431663cbce78b) |
