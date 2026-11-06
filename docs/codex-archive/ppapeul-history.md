@@ -4,6 +4,7 @@
 
 | 시각 (KST) | 분류 | 커밋 메시지 | 기록 |
 | --- | --- | --- | --- |
+| 2026-11-06 14:20 | 문서 | docs: link separate ddnwls collaborator contribution ledger | [3933fbd](https://github.com/asnt39/ppapeul/commit/3933fbde96464548e8e223d486c3e2b956c0d74c) |
 | 2026-11-06 14:20 | 문서 | docs: preserve separate collaborator attribution in Codex instructions | [f2617da](https://github.com/asnt39/ppapeul/commit/f2617da175705262c933070707664e5ff865e499) |
 | 2026-11-06 14:19 | 문서 | docs: distinguish ddnwls collaborator contributions from asnt39 ownership | [eeb8512](https://github.com/asnt39/ppapeul/commit/eeb8512129cd13ac6debc2dd7b17f7f751f3b4c5) |
 | 2026-11-06 14:19 | 문서 | docs: attribute ddnwls contributions separately from repository owner | [4c94ffd](https://github.com/asnt39/ppapeul/commit/4c94ffdb3daebd197cf11ac29428d85da5f02baa) |
