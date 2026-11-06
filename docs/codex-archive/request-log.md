@@ -2,6 +2,15 @@
 
 이 문서는 빠플 관련 사용자 요청과 구현 결과를 구분하는 기록이다. `AGENTS.md`의 기준에 따라 Codex 작업 시 갱신한다. 저장소의 GitHub 커밋 이력은 [ppapeul-history.md](ppapeul-history.md)에서 별도로 자동 생성된다.
 
+## 2026-11-06 — 공동 작업자(ddnwls) 독립 기여 명시
+
+- **요청:** 기존 관리자 `asnt39`와 별개로 `ddnwls`가 수행한 빠플 작업임을 저장소에 명시하고, 본인의 작업만 구분해 기록.
+- **분류:** 협업/기여 출처 정리
+- **변경 문서:** `README.md`, `AGENTS.md`, `docs/codex-archive/README.md`, `docs/codex-archive/ddnwls-contributions.md` 및 이 요청 이력.
+- **기여 구분:** GitHub 커밋 작성자가 `ddnwls`인지 확인하여 별도 기여로 표시. 기존 `asnt39` 커밋 및 자동 `github-actions[bot]` 커밋과 구분.
+- **검증:** GitHub의 커밋 작성자 메타데이터 및 저장소 파일에서 구분 근거 확인. 앱 기능·테스트는 이 문서 작업에서 변경하지 않음.
+- **향후 기준:** 새 Codex 작업에도 코드 작성자·요청자·자동화 봇을 구분. [공동 작업자 기여 기록](ddnwls-contributions.md) 참조.
+
 ## 2026-11-06 — 개발 이력·저장소 분류 정책
 
 - **사용자 요청:** 빠플 관련 Codex 작업은 `asnt39/ppapeul`에만 저장하고, 그 밖의 Codex 작업은 `ddnwls` 계정 소유 저장소에 프로젝트별로 저장. 이전 빠플 작업 이력도 분류하여 보관.
