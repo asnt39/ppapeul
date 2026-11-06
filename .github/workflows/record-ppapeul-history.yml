@@ -17,28 +17,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Categorize committed changes
+      - name: Categorize commits and identify Git authors
         shell: bash
         run: |
           python3 - <<'PY'
           import datetime as dt
           import pathlib
+          import re
           import subprocess
 
-          result = subprocess.check_output(
-              ["git", "log", "--all", "--format=%H%x1f%aI%x1f%s%x1e"],
+          raw = subprocess.check_output(
+              ["git", "log", "HEAD", "--format=%H%x1f%aI%x1f%an%x1f%s%x1e"],
               text=True,
           )
           entries = []
-          for item in result.split("\x1e"):
+          for item in raw.split("\x1e"):
               item = item.strip()
               if not item or "\x1f" not in item:
                   continue
-              sha, when, message = item.split("\x1f", 2)
+              sha, when, author, message = item.split("\x1f", 3)
               if message.startswith("docs(auto): refresh Ppapeul git history"):
                   continue
               lower = message.lower()
-              import re
               tokens = set(re.findall(r"[a-z]+", lower))
               prefix = lower.partition(":")[0].strip()
               if prefix == "docs" or tokens.intersection({"readme", "documentation", "guide"}):
@@ -64,32 +64,49 @@ jobs:
               date = dt.datetime.fromisoformat(when).astimezone(
                   dt.timezone(dt.timedelta(hours=9))
               ).strftime("%Y-%m-%d %H:%M")
-              safe = message.replace("|", "\\|").replace("\n", " ")
+              safe_message = message.replace("|", r"\|").replace("\n", " ")
+              safe_author = author.replace("|", r"\|").replace("\n", " ")
               url = f"https://github.com/asnt39/ppapeul/commit/{sha}"
-              entries.append((when, f"| {date} | {category} | {safe} | [{sha[:7]}]({url}) |"))
+              row = f"| {date} | {category} | {safe_author} | {safe_message} | [{sha[:7]}]({url}) |"
+              entries.append((when, author, row))
 
           entries.sort(key=lambda item: item[0], reverse=True)
           header = (
               "# 빠플 GitHub 커밋 자동 분류 기록\n\n"
-              "빠플 전용 저장소의 GitHub 커밋만 기록합니다. 이 표는 커밋 제목에 근거한 "
-              "자동 분류이며, Codex 세션의 모든 프롬프트를 수집하거나 테스트 성공을 "
-              "보증하지 않습니다. 과거 다른 저장소의 빠플 작업은 [README](README.md)를 참조하세요.\n\n"
-              "| 시각 (KST) | 분류 | 커밋 메시지 | 기록 |\n"
-              "| --- | --- | --- | --- |\n"
+              "빠플 저장소의 main 브랜치 커밋만 기록합니다. Git 작성자와 관리자·공동 작업자를 구분합니다. "
+              "분류는 커밋 제목에 기반하며 Codex 세션 전체나 테스트 성공을 보증하지 않습니다.\n\n"
+              "| 시각 (KST) | 분류 | Git 작성자 | 커밋 메시지 | 기록 |\n"
+              "| --- | --- | --- | --- | --- |\n"
           )
-          out = pathlib.Path("docs/codex-archive/ppapeul-history.md")
-          out.parent.mkdir(parents=True, exist_ok=True)
-          out.write_text(header + "\n".join(row for _, row in entries) + "\n", encoding="utf-8")
+          own_header = (
+              "# 공동 작업자 ddnwls — Git 커밋 자동 분류\n\n"
+              "이 표에는 Git 작성자 이름이 ddnwls인 빠플 저장소 커밋만 포함합니다. "
+              "기존 관리자 asnt39의 커밋 및 자동화 봇의 커밋은 제외합니다. "
+              "별도 저장소에서 수행한 과거 작업과 기여 설명은 "
+              "[공동 작업자 기여 기록](ddnwls-contributions.md)을 참고하세요.\n\n"
+              "| 시각 (KST) | 분류 | Git 작성자 | 커밋 메시지 | 기록 |\n"
+              "| --- | --- | --- | --- | --- |\n"
+          )
+          out = pathlib.Path("docs/codex-archive")
+          out.mkdir(parents=True, exist_ok=True)
+          (out / "ppapeul-history.md").write_text(
+              header + "\n".join(row for _, _, row in entries) + "\n",
+              encoding="utf-8",
+          )
+          (out / "ddnwls-auto-history.md").write_text(
+              own_header + "\n".join(row for _, author, row in entries if author == "ddnwls") + "\n",
+              encoding="utf-8",
+          )
           PY
 
       - name: Save history if changed
         shell: bash
         run: |
-          if git diff --quiet -- docs/codex-archive/ppapeul-history.md && git ls-files --error-unmatch docs/codex-archive/ppapeul-history.md >/dev/null 2>&1; then
+          git add docs/codex-archive/ppapeul-history.md docs/codex-archive/ddnwls-auto-history.md
+          if git diff --cached --quiet; then
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/codex-archive/ppapeul-history.md
           git commit -m "docs(auto): refresh Ppapeul git history"
           git push
