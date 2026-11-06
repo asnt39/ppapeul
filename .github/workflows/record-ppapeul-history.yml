@@ -38,21 +38,26 @@ jobs:
               if message.startswith("docs(auto): refresh Ppapeul git history"):
                   continue
               lower = message.lower()
-              if any(x in lower for x in ["revert", "restore", "rollback"]):
-                  category = "되돌리기"
-              elif any(x in lower for x in ["fix", "bug", "error", "patch"]):
-                  category = "오류 수정"
-              elif any(x in lower for x in ["design", "style", "layout", "ux", "ui", "dial"]):
-                  category = "디자인/UX"
-              elif any(x in lower for x in ["docs", "readme", "guide", "documentation"]):
+              import re
+              tokens = set(re.findall(r"[a-z]+", lower))
+              prefix = lower.partition(":")[0].strip()
+              if prefix == "docs" or tokens.intersection({"readme", "documentation", "guide"}):
                   category = "문서"
-              elif "test" in lower:
+              elif prefix in {"ci", "build"} or tokens.intersection({"workflow", "actions"}):
+                  category = "자동화/빌드"
+              elif prefix == "revert" or tokens.intersection({"restore", "rollback", "revert"}):
+                  category = "되돌리기"
+              elif prefix == "fix" or tokens.intersection({"fix", "bug", "error", "patch"}):
+                  category = "오류 수정"
+              elif prefix in {"style", "design", "ux", "ui"} or tokens.intersection({"design", "style", "layout", "ux", "ui", "dial"}):
+                  category = "디자인/UX"
+              elif prefix == "test" or tokens.intersection({"test", "tests", "testing"}):
                   category = "테스트"
-              elif any(x in lower for x in ["chore", "cleanup", "refactor", "remove"]):
+              elif prefix in {"chore", "refactor"} or tokens.intersection({"cleanup", "refactor", "remove"}):
                   category = "유지보수"
-              elif "initial" in lower or "init" in lower:
+              elif tokens.intersection({"initial", "init"}):
                   category = "초기화"
-              elif any(x in lower for x in ["add", "update", "implement", "feature"]):
+              elif prefix in {"feat", "feature"} or tokens.intersection({"add", "update", "implement", "feature"}):
                   category = "기능/업데이트"
               else:
                   category = "기타"
