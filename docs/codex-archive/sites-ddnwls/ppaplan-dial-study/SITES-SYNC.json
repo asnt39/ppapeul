@@ -1,0 +1,20 @@
+{
+  "id": "appgprj_6aeb477729108191879ff8cd333c8f7d",
+  "title": "빠플 — 시험까지, 가장 빠른 플랜",
+  "slug": "ppaplan-dial-study",
+  "url": "https://ppaplan-dial-study.poeticjay37.chatgpt.site",
+  "repository": "asnt39/ppapeul",
+  "version": 2,
+  "source_commit": "d39006ed4dc3cf5c740f0a4e7e9deceabf135fc4",
+  "files": [
+    "dist/index.html"
+  ],
+  "direction": "Sites -> GitHub",
+  "requested_by": "ddnwls",
+  "role_note": "ddnwls는 기존 관리자 asnt39와 별개의 공동 작업자입니다. 이 기록은 ddnwls가 요청한 Sites 소스 보관·동기화 작업이며, 기존 코드 전체의 작성자 또는 단독 소유권을 주장하지 않습니다.",
+  "excluded": [
+    ".openai (hosting identity)",
+    ".github (workflows)",
+    ".env and private key files"
+  ]
+}
