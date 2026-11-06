@@ -64,6 +64,14 @@ node tests/notifications.test.mjs
 
 서버 API 통합 검사용 `tests/community.py`는 `http://127.0.0.1:8787`에서 로컬 API와 데이터베이스가 정상 실행 중일 때만 실행해.
 
+Playwright와 Chromium이 설치된 개발 환경에서는 화면 겹침 회귀 검사도 실행할 수 있어:
+
+```sh
+CHROMIUM_PATH=/usr/bin/chromium node --test tests/responsive.test.cjs
+```
+
+Playwright가 관리하는 Chromium을 사용하면 `CHROMIUM_PATH`는 생략해. 이 검사는 로컬 정적 파일과 가상 데이터를 사용해 320~1440px의 16개 너비에서 7개 주요 화면의 가로 넘침·입력 요소 겹침을 확인해. 실제 서버 API나 iOS Safari 실기기 동작을 검증하는 테스트는 아니야.
+
 **이 문서에 적힌 명령은 실행 방법이지, 이번 README 수정 과정에서 테스트 성공을 보증하는 것은 아니야.**
 
 ## 현재 제약과 주의사항

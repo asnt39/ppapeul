@@ -51,3 +51,11 @@
 Sites 버전 별도 보관 및 동기화 구성. 기존 관리자 asnt39와 별개인 공동 작업자 ddnwls의 요청·보관 기여이며 기존 원본 코드 전체의 저작을 주장하지 않음.
 
 변경 경로: `docs/codex-archive/sites-ddnwls/ppaplan-dial-study`. 원본 커밋: `d39006ed4dc3cf5c740f0a4e7e9deceabf135fc4`. 반영 커밋은 이 문서의 Git 이력에서 확인할 수 있음.
+
+## 2026-11-06 — 화면 너비별 폼·콘텐츠 겹침 수정
+
+공동 작업자 `ddnwls`의 요청에 따라 Codex가 수행한 반응형 배치 수정 및 회귀 검사 추가. 기존 관리자 `asnt39`의 앱 기능을 기반으로 하며 원본 기능의 저작 기여와 구분한다.
+
+변경 파일: `public/index.html`, `public/responsive.css`, `tests/responsive.test.cjs`, `README.md`, `docs/codex-archive/request-log.md`, 본 문서. 분류: 오류/UI/테스트/문서. 목적과 변경 커밋은 이 문서의 Git 이력에서 확인 가능하다.
+
+검증: Chromium 112개 화면/너비 조합, 타이머·짧은 화면 패널 검사 및 기존 Node 테스트 3개 파일 성공. 실제 iOS Safari·Android 기기와 운영 API 검증, Sites 배포는 완료하지 못함(프로젝트 접근 권한 없음).

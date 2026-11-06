@@ -1,0 +1,401 @@
+/* Shared layout constraints, applied after the feature styles. */
+header,
+main,
+.layout > *,
+.plan-layout > *,
+.hub-grid > *,
+.settings-layout > *,
+.subject > *,
+.hours > *,
+.stats > * {
+  min-width: 0;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+}
+
+header {
+  height: auto;
+  min-height: 96px;
+  flex-wrap: wrap;
+  padding-block: 16px;
+}
+
+header .brand,
+header #theme,
+.section-title > span,
+.toggle input,
+.daily-check,
+.setting-row input {
+  flex-shrink: 0;
+}
+
+.backup-actions {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.tabs {
+  flex-wrap: wrap;
+  gap: 0 8px;
+  overflow: visible;
+  white-space: normal;
+}
+
+.tabs button {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.subject {
+  grid-template-columns: minmax(0, 1fr) minmax(152px, .9fr) minmax(100px, .7fr) 40px;
+}
+
+.subject label {
+  display: block;
+}
+
+.subject .remove {
+  width: 40px;
+  height: 48px;
+}
+
+.hours {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.hub-row {
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.hub-row > label,
+.hub-row > input,
+.hub-row > select {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.hub-row > button {
+  flex: 0 1 auto;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.hub-row > .primary {
+  flex: 1 1 180px;
+  width: auto;
+}
+
+.quick-entry .hub-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+}
+
+.quick-entry .hub-row label {
+  min-width: 0;
+}
+
+.quick-entry .hub-action {
+  height: auto;
+  min-height: 48px;
+  white-space: normal;
+}
+
+.hub-grid {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+}
+
+.focus-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.row-head,
+.result-heading,
+.daily-heading,
+.daily-total,
+.record-row,
+.friend-row,
+.learning-entry .hub-row {
+  flex-wrap: wrap;
+}
+
+.section-title > div,
+.record-row > div,
+.friend-row > div,
+.permission-state > div,
+.setting-row > span,
+.task > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.record-row > div,
+.friend-row > div {
+  flex: 1 1 120px;
+}
+
+.stat strong,
+.learning-entry b,
+.daily-task-info b,
+.task strong,
+.exam-note,
+.notice,
+#alarmStatus,
+#liveTimer b {
+  overflow-wrap: anywhere;
+}
+
+.daily-task {
+  flex-wrap: wrap;
+}
+
+.daily-task-info {
+  flex: 1 1 100px;
+  min-width: 0;
+}
+
+.minute-editor {
+  flex: 0 0 auto;
+}
+
+.toggle {
+  align-items: flex-start;
+}
+
+.toggle input {
+  margin-top: 2px;
+}
+
+#closeFields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.close-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+#closeFields input {
+  width: 76px;
+  flex: 0 0 76px;
+}
+
+.progress-ring {
+  width: min(260px, 100%);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.progress-ring .timer-display {
+  font-size: clamp(26px, 7vw, 42px);
+  letter-spacing: -.04em;
+}
+
+.legend {
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+#calendar button small {
+  overflow-wrap: anywhere;
+}
+
+/* Keep the mascot in navigation so it cannot cover form controls. */
+#petButton {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  background: transparent;
+  color: var(--green);
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 18px;
+  animation: none;
+}
+
+#petButton small {
+  display: inline;
+  margin: 0;
+  font-size: 12px;
+}
+
+#liveTimer {
+  left: 16px;
+  right: auto;
+  transform: none;
+  max-width: min(560px, calc(100vw - 32px));
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#liveTimer b {
+  min-width: 0;
+}
+
+#petPanel {
+  max-height: calc(100dvh - 136px);
+  overflow: auto;
+}
+
+html {
+  scroll-padding-block: 140px 120px;
+}
+
+@media (max-width: 960px) {
+  .subject {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .subject .remove {
+    grid-column: 2;
+    justify-self: end;
+    height: 48px;
+  }
+
+  .hub-grid,
+  .focus-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .tabs button {
+    padding: 12px 4px;
+    font-size: 12px;
+  }
+
+  .tabs b {
+    display: block;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .focus-grid .alarm-card {
+    display: block;
+  }
+
+  .intro-note {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  header {
+    min-height: 80px;
+  }
+
+  input,
+  select,
+  textarea,
+  .subject input,
+  .subject select,
+  .hours input,
+  .minute-editor input {
+    font-size: 16px;
+  }
+
+  .backup-actions {
+    justify-content: flex-start;
+  }
+
+  .hub-row > button {
+    min-height: 44px;
+  }
+
+  .stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    flex-wrap: wrap;
+  }
+
+  .stat strong {
+    margin: 0;
+  }
+
+  .briefing-time {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .briefing-time input {
+    width: min(160px, 100%);
+  }
+
+  #petButton {
+    bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subject {
+    grid-template-columns: minmax(0, 1fr) 40px;
+  }
+
+  .subject > label {
+    grid-column: 1 / -1;
+  }
+
+  .subject > label:nth-of-type(3) {
+    grid-column: 1;
+  }
+
+  .subject .remove {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .hours {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 8px;
+  }
+
+  .section-title > span {
+    width: 32px;
+    height: 32px;
+  }
+
+  .section-title {
+    gap: 12px;
+  }
+
+  .section-title h2 {
+    font-size: 21px;
+  }
+}
