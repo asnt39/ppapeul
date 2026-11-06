@@ -15,3 +15,4 @@
 | 2026-11-06 14:14 | 문서 | ddnwls | docs: guide Codex to keep Ppapeul tasks and archives in this repository | [24e0f4b](https://github.com/asnt39/ppapeul/commit/24e0f4b80f7e9c8414378b34775431663cbce78b) |
 | 2026-11-06 14:12 | 자동화/빌드 | ddnwls | ci: classify and log Ppapeul commits after every main push | [e7f1f8b](https://github.com/asnt39/ppapeul/commit/e7f1f8b5b1b5891d076545e14cb2f10b880b9611) |
 | 2026-11-06 14:12 | 문서 | ddnwls | docs: consolidate historical Ppapeul Codex changes and routing policy | [734c022](https://github.com/asnt39/ppapeul/commit/734c0222d84c125177d144cf7949311da191e2a0) |
+| 2026-11-06 14:45 | 디자인/UX | ddnwls | chore: sync Sites ppaplan-dial-study requested by collaborator ddnwls | [930f9a8](https://github.com/asnt39/ppapeul/commit/930f9a85abcd2a1ab807b8c9383791aa3c26b16b) |
