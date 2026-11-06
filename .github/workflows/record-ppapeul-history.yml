@@ -1,0 +1,90 @@
+name: Record Ppapeul GitHub changes
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-history:
+    if: github.repository == 'asnt39/ppapeul'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Categorize committed changes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import pathlib
+          import subprocess
+
+          result = subprocess.check_output(
+              ["git", "log", "--all", "--format=%H%x1f%aI%x1f%s%x1e"],
+              text=True,
+          )
+          entries = []
+          for item in result.split("\x1e"):
+              item = item.strip()
+              if not item or "\x1f" not in item:
+                  continue
+              sha, when, message = item.split("\x1f", 2)
+              if message.startswith("docs(auto): refresh Ppapeul git history"):
+                  continue
+              lower = message.lower()
+              if any(x in lower for x in ["revert", "restore", "rollback"]):
+                  category = "되돌리기"
+              elif any(x in lower for x in ["fix", "bug", "error", "patch"]):
+                  category = "오류 수정"
+              elif any(x in lower for x in ["design", "style", "layout", "ux", "ui", "dial"]):
+                  category = "디자인/UX"
+              elif any(x in lower for x in ["docs", "readme", "guide", "documentation"]):
+                  category = "문서"
+              elif "test" in lower:
+                  category = "테스트"
+              elif any(x in lower for x in ["chore", "cleanup", "refactor", "remove"]):
+                  category = "유지보수"
+              elif "initial" in lower or "init" in lower:
+                  category = "초기화"
+              elif any(x in lower for x in ["add", "update", "implement", "feature"]):
+                  category = "기능/업데이트"
+              else:
+                  category = "기타"
+              date = dt.datetime.fromisoformat(when).astimezone(
+                  dt.timezone(dt.timedelta(hours=9))
+              ).strftime("%Y-%m-%d %H:%M")
+              safe = message.replace("|", "\\|").replace("\n", " ")
+              url = f"https://github.com/asnt39/ppapeul/commit/{sha}"
+              entries.append((when, f"| {date} | {category} | {safe} | [{sha[:7]}]({url}) |"))
+
+          entries.sort(key=lambda item: item[0], reverse=True)
+          header = (
+              "# 빠플 GitHub 커밋 자동 분류 기록\n\n"
+              "빠플 전용 저장소의 GitHub 커밋만 기록합니다. 이 표는 커밋 제목에 근거한 "
+              "자동 분류이며, Codex 세션의 모든 프롬프트를 수집하거나 테스트 성공을 "
+              "보증하지 않습니다. 과거 다른 저장소의 빠플 작업은 [README](README.md)를 참조하세요.\n\n"
+              "| 시각 (KST) | 분류 | 커밋 메시지 | 기록 |\n"
+              "| --- | --- | --- | --- |\n"
+          )
+          out = pathlib.Path("docs/codex-archive/ppapeul-history.md")
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(header + "\n".join(row for _, row in entries) + "\n", encoding="utf-8")
+          PY
+
+      - name: Save history if changed
+        shell: bash
+        run: |
+          if git diff --quiet -- docs/codex-archive/ppapeul-history.md && git ls-files --error-unmatch docs/codex-archive/ppapeul-history.md >/dev/null 2>&1; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/codex-archive/ppapeul-history.md
+          git commit -m "docs(auto): refresh Ppapeul git history"
+          git push
