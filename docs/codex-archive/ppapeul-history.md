@@ -4,6 +4,7 @@
 
 | 시각 (KST) | 분류 | 커밋 메시지 | 기록 |
 | --- | --- | --- | --- |
+| 2026-11-06 14:14 | 디자인/UX | docs: guide Codex to keep Ppapeul tasks and archives in this repository | [24e0f4b](https://github.com/asnt39/ppapeul/commit/24e0f4b80f7e9c8414378b34775431663cbce78b) |
 | 2026-11-06 14:12 | 기타 | ci: classify and log Ppapeul commits after every main push | [e7f1f8b](https://github.com/asnt39/ppapeul/commit/e7f1f8b5b1b5891d076545e14cb2f10b880b9611) |
 | 2026-11-06 14:12 | 문서 | docs: consolidate historical Ppapeul Codex changes and routing policy | [734c022](https://github.com/asnt39/ppapeul/commit/734c0222d84c125177d144cf7949311da191e2a0) |
 | 2026-11-06 13:48 | 기능/업데이트 | Add 빠플 project submission archive | [b5e9707](https://github.com/asnt39/ppapeul/commit/b5e9707707564cb906725690a9571d6738a1e89e) |
