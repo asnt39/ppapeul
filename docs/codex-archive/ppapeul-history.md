@@ -4,6 +4,7 @@
 
 | 시각 (KST) | 분류 | Git 작성자 | 커밋 메시지 | 기록 |
 | --- | --- | --- | --- | --- |
+| 2026-11-11 22:08 | 문서 | asnt39 | docs: summarize current Ppapeul features | [2a10cb8](https://github.com/asnt39/ppapeul/commit/2a10cb88da134a10eeb8bd7a6f8025ba96bc861e) |
 | 2026-11-06 14:57 | 오류 수정 | ddnwls | Fix responsive form overlap and long-content overflow across study screens | [8d83323](https://github.com/asnt39/ppapeul/commit/8d833231c32c000317ddd2f4157d2c21c4ce1d2e) |
 | 2026-11-06 14:21 | 자동화/빌드 | ddnwls | ci: automatically separate collaborator and admin Git commit histories | [515d84f](https://github.com/asnt39/ppapeul/commit/515d84f026cc95f781a4f72fca57acbb602a0a1d) |
 | 2026-11-06 14:20 | 문서 | ddnwls | docs: record collaborator attribution request and verified scope | [5be2eef](https://github.com/asnt39/ppapeul/commit/5be2eef9ae98bebdd7da48c31894eb125196cacc) |
