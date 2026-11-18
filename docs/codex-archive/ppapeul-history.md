@@ -4,6 +4,8 @@
 
 | 시각 (KST) | 분류 | Git 작성자 | 커밋 메시지 | 기록 |
 | --- | --- | --- | --- | --- |
+| 2026-11-19 02:03 | 기능/업데이트 | asnt39 | Merge pull request #3: Add PWA installation support | [e2ec745](https://github.com/asnt39/ppapeul/commit/e2ec745d3c5fd953b28dfa9bda477785f002193e) |
+| 2026-11-19 01:54 | 기능/업데이트 | asnt39 | feat(pwa): add install entry point and Android PNG icons | [fee8fb8](https://github.com/asnt39/ppapeul/commit/fee8fb8e62a4755f7f7a604fb34e62478d5eaf46) |
 | 2026-11-11 22:08 | 문서 | asnt39 | docs: summarize current Ppapeul features | [2a10cb8](https://github.com/asnt39/ppapeul/commit/2a10cb88da134a10eeb8bd7a6f8025ba96bc861e) |
 | 2026-11-06 14:57 | 오류 수정 | ddnwls | Fix responsive form overlap and long-content overflow across study screens | [8d83323](https://github.com/asnt39/ppapeul/commit/8d833231c32c000317ddd2f4157d2c21c4ce1d2e) |
 | 2026-11-06 14:21 | 자동화/빌드 | ddnwls | ci: automatically separate collaborator and admin Git commit histories | [515d84f](https://github.com/asnt39/ppapeul/commit/515d84f026cc95f781a4f72fca57acbb602a0a1d) |
