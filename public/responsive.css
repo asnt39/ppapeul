@@ -399,3 +399,14 @@ html {
     font-size: 21px;
   }
 }
+
+/* App installation: a small header action and a native, accessible help dialog. */
+.backup-actions #installApp{margin-left:0;min-height:40px;white-space:nowrap;color:var(--ink);border:1px solid var(--line);border-radius:12px}
+.backup-actions #installApp[hidden]{display:none}
+.install-guide{position:fixed;inset:0;margin:auto;width:min(420px,calc(100vw - 28px));max-height:calc(100dvh - 36px);overflow:auto;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);box-shadow:0 16px 60px #10172930}
+.install-guide::backdrop{background:#10172999}
+.install-guide h2{font-size:20px;margin:0 0 12px}
+.install-guide p{font-size:14px;line-height:1.75;white-space:pre-line;overflow-wrap:anywhere;margin:0 0 16px}
+.install-guide .install-note{font-size:12px;color:var(--muted)}
+.install-guide #installClose{min-width:80px;min-height:44px}
+@media(max-width:640px){.backup-actions #installApp{min-height:44px}}

@@ -48,3 +48,11 @@
 - 요청: 현재 빠플과 GitHub·Notion 설명 점검 및 간결한 기능 안내.
 - 분류: 문서. 변경: `README.md`, `docs/codex-archive/request-log.md`; Notion 디자인 분석 페이지에 기능 요약 추가.
 - 검증: GitHub main의 화면과 기능 코드 정적 확인. 실행 테스트 및 운영 사이트와 전체 소스 일치 여부 미확인. 서비스 코드 및 배포 변경 없음.
+
+## 2026-11-19 — 설치형 웹앱(PWA) 진입점 보완
+
+- 요청: 최신 빠플 원본을 Android/Samsung Internet 등에서 앱처럼 설치할 수 있게 만들기.
+- 분류: 기능/호환성/테스트·문서. 변경: `public/index.html`, `public/responsive.css`, `public/manifest.webmanifest`, `public/pwa-install.js`, `public/icon-192.png`, `public/icon-512.png`, `app/layout.tsx`, `tests/pwa-install.test.cjs`, `README.md`, 이 요청 로그.
+- 구현: 명시적 설치 버튼과 모바일 브라우저별 설치 안내, 192·512px PNG 아이콘. 기존 알림용 서비스 워커와 사용자 저장 키는 그대로 유지.
+- 검증: GitHub 브랜치 파일 정적 확인 및 새 설치 UI 단위 테스트를 기준으로 구분해 보고. 서비스 배포·실기기 설치 확인 전에는 완료로 주장하지 않음.
+- 배포: 승인 전 `main` 병합하지 않는 PR 작업. Sites 프로젝트 접근과 운영 사이트 반영은 별도 검증이 필요함.
