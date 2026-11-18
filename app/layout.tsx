@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "빠플 · 나의 공부 동료",
   description: "시험 계획, 집중 타이머, 친구와 함께하는 공부 기록",
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
